@@ -1,0 +1,13 @@
+# Configurações do VS Code e Codespaces
+.vscode/
+*.json
+
+# Arquivos de texto e logs temporários
+*.txt
+*.log
+
+# Executáveis compilados (Linux, Mac e Windows)
+*.out
+*.exe
+*.o
+programa
