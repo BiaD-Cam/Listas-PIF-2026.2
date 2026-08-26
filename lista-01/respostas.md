@@ -1,282 +1,227 @@
-# Lista de Exercícios - Capítulo 1
----
-### Questão 05
-Analise o seguinte trecho de código em C. Sob a perspectiva do padrão ANSI C, o
-programa está correto para compilação e execução imediata? Caso negativo, descreva quais elementos
-cruciais e diretivas estão faltando no código abaixo:
+# Lista de Exercicios - Capitulo 1
 
+---
+
+### Questao 04
+Enunciado: O programa abaixo contem diversos erros de sintaxe e de compilacao. Identifique e explique cada um dos erros presentes no codigo:
+#include <stdlib.h>;
+int Main{}
+(
+  printf( Existem %d semanas no ano.,52);
+  cout << endl;
+)
+
+Erros no codigo:
+1. #include <stdlib.h>; 
+Tem um ponto e virgula no final da linha do include. Nao se usa ponto e virgula em linhas que comecam com hashtag.
+
+2. int Main{}
+A palavra Main esta com M maiusculo e a linguagem C diferencia maiusculas de minusculas. O correto e main com m minusculo. Tambem usaram chaves {} no lugar de parenteses () para os parametros.
+
+3. ( e )
+Usaram parenteses para abrir e fechar o bloco do programa. O certo em C e usar chaves { e }.
+
+4. printf( Existem %d semanas no ano.,52);
+O texto dentro do printf precisa estar entre aspas duplas, assim: "Existem %d semanas no ano.".
+
+5. cout << endl;
+O comando cout e da linguagem C++, nao da linguagem C. Para pular linha em C se usa \n dentro do printf.
+
+---
+
+### Questao 05
+Enunciado: O programa a seguir esta correto segundo o padrao ANSI C? Justifique sua resposta indicando os elementos ausentes:
 main()
 {
-    printf("Linguagem C");
-    system("pause");
+  printf("Testando um programa C\n");
 }
 
-Resposta: Não, o programa não está correto para compilação e execução imediata sob a perspectiva do padrão ANSI C.
+Resposta: Nao esta correto.
 
-1. **Diretivas de Cabeçalho (Headers):** Faltam as diretivas `#include <stdio.h>` (necessária para a função `printf`) e `#include <stdlib.h>` (necessária para a função `system`).
-2. **Declaração do Tipo de Retorno:** No padrão ANSI C (e C99/C11 em diante), a função `main()` deve especificar explicitamente seu tipo de retorno, usando `int main()`.
-3. **Instrução de Retorno:** O bloco da função deve conter a instrução `return 0;` ao final para indicar ao sistema operacional que a execução foi concluída com sucesso.
+Elementos ausentes:
+1. Falta colocar a biblioteca #include <stdio.h> no comeco do arquivo para o comando printf funcionar direito.
+2. Falta colocar o tipo int antes do main(), ficando int main().
+3. Falta colocar o return 0; no final do programa para avisar o sistema que o programa deu certo.
 
 ---
 
-### Questão 06
-Identifique e liste todos os erros de sintaxe (que violam as regras da linguagem C) e de
-lógica contidos no programa abaixo:
-
-main()
-{
+### Questao 06
+Enunciado: Identifique os erros de sintaxe e os erros de logica presentes no trecho de codigo a seguir:
 int a=1; b=2; c=3:
-printf("0s números são: %d%d%d\n, a, b, c, d);
-system("pause");
-}
+printf("0s numeros sao: %d%d%d\n, a, b, c, d);
 
-**Erros de Sintaxe:**
-1. `int a=1; b=2; c=3:` — O ponto e vírgula `;` encerra a declaração do tipo `int` apenas para `a`, tornando `b` e `c` não declaradas. Além disso, a instrução termina com dois pontos `:` em vez de `;`.
-2. `printf("0s números são: %d%d%d\n, a, b, c, d);` — Falta fechar as aspas duplas `"` da string de formato antes da vírgula.
-3. Caractere ordinal incorreto: O texto utiliza o numeral `0` no lugar da letra `O` maiúscula em `"0s números"`.
+Erros de Sintaxe:
+1. Na linha int a=1; b=2; c=3: o ponto e virgula depois do a=1 fez com que o b e o c nao fossem declarados como int. No final da linha usaram dois pontos : em vez de ponto e virgula ;.
+2. No printf faltou fechar as aspas duplas depois do \n.
+3. Escreveram 0s numeros usando o numero zero no lugar da letra O maiuscula.
 
-**Erros de Lógica:**
-1. **Variável não declarada:** A variável `d` é passada como argumento no `printf()`, mas nunca foi declarada na memória.
-2. **Incompatibilidade de formatadores:** Existem 3 especificadores `%d%d%d` para 4 variáveis fornecidas (`a`, `b`, `c`, `d`).
-3. **Falta de espaçamento visual:** Ausência de espaços entre os especificadores `%d`, o que fará com que os números sejam exibidos colados no terminal.
+Erros de Logica:
+1. A variavel d foi colocada dentro do printf, mas ela nunca foi criada ou declarada no programa.
+2. Tem 3 especificadores %d%d%d para 4 variaveis (a, b, c, d).
+3. Nao colocaram espacos entre os %d, entao os numeros tao saindo todos colados no terminal.
 
 ---
 
-### Questão 07
-Descreva a saída exata (incluindo quebras de linha e tabulações) que será impressa no
-console por cada uma das seguintes instruções independentes do printf():
+### Questao 07
+Enunciado: O que sera impresso na tela por cada uma das seguintes instrucoes printf?
 
 a) printf("\n\tBom dia! Shirley.");
-b) printf("Você já tomou café? \n");
-c) printf("\n\nA solução não existe!\nNão insista.");
-d) printf("Duas\tlinhas\tde\tsaída\nou\tuma?");
-e) printf("%s\n%s\n%s\n", "um", "dois", "três");
+>   
+>     Bom dia! Shirley.  
+(Explicacao: O \n pula uma linha e o \t da um espaco de tabulacao antes de mostrar o texto).
 
-**Saída exata produzida por cada instrução `printf()`:**
+b) printf("Voce ja tomou cafe? \n");
+> Voce ja tomou cafe?   
+>   
+(Explicacao: Mostra a frase normal e o \n no final faz o cursor ir para a linha de baixo).
 
-* **a)** `printf("\n\tBom dia! Shirley.");`
-> &nbsp;  
-> &nbsp;&nbsp;&nbsp;&nbsp;Bom dia! Shirley.  
-*(Explicação: Pula uma linha inicial com `\n`, avança uma tabulação horizontal com `\t` e imprime a frase).*
+c) printf("\n\nA solucao nao existe!\nNao insista.");
+>   
+>   
+> A solucao nao existe!  
+> Nao insista.  
+(Explicacao: O \n\n pula duas linhas, imprime a primeira frase, pula outra linha com \n e imprime a segunda frase).
 
-* **b)** `printf("Você já tomou café? \n");`
-> Você já tomou café?   
-> &nbsp;  
-*(Explicação: Imprime a frase mantendo o espaço final e salta para a linha seguinte com `\n`).*
+d) printf("Duas\tlinhas\tde\tsaida\nou\tuma?");
+> Duas    linhas    de    saida  
+> ou    uma?  
+(Explicacao: O \t da espacos entre as palavras da primeira linha. O \n quebra a linha depois de saida e o resto continua na linha de baixo com espacos \t).
 
-* **c)** `printf("\n\nA solução não existe!\nNão insista.");`
-> &nbsp;  
-> &nbsp;  
-> A solução não existe!  
-> Não insista.  
-*(Explicação: Insere duas quebras de linha `\n\n`, imprime a primeira frase, insere nova quebra `\n` e exibe a segunda frase).*
-
-* **d)** `printf("Duas\tlinhas\tde\tsaída\nou\tuma?");`
-> Duas&nbsp;&nbsp;&nbsp;&nbsp;linhas&nbsp;&nbsp;&nbsp;&nbsp;de&nbsp;&nbsp;&nbsp;&nbsp;saída  
-> ou&nbsp;&nbsp;&nbsp;&nbsp;uma?  
-*(Explicação: Imprime palavras separadas por tabulações `\t`, realiza a quebra de linha após `saída` e retoma a impressão tabulada na linha de baixo).*
-
-* **e)** `printf("%s\n%s\n%s\n", "um", "dois", "três");`
+e) printf("%s\n%s\n%s\n", "um", "dois", "tres");
 > um  
 > dois  
-> três  
-*(Explicação: Substitui cada `%s` pelo respectivo literal de texto e aplica a quebra de linha `\n` após cada elemento).*
+> tres  
+(Explicacao: O %s troca pela palavra correspondente e o \n faz cada palavra ficar em uma linha separada).
 
 ---
 
-### Questão 08
-Explique detalhadamente o comportamento do programa abaixo quando executado no
-console. Apresente qual será a saída exata gerada pelas sequências de escape utilizadas no formato de
-controle:
-
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
+### Questao 08
+Enunciado: Qual e o resultado impresso na tela ao executar o seguinte trecho de codigo?
 printf("\n\t\"Primeiro programa\"");
-system("PAUSE");
-return 0;
-}
 
-**Comportamento e Saída Exata:**  
-O programa utiliza a sequência de escape `\"` para informar ao compilador que o caractere de aspas duplas deve ser exibido visualmente no console, sem que isso represente o fechamento da string. 
+Saida na tela:
+>   
+>     "Primeiro programa"  
 
-> &nbsp;  
-> &nbsp;&nbsp;&nbsp;&nbsp;"Primeiro programa"  
-*(Explicação: O caractere `\n` pula para a linha seguinte, `\t` aplica a tabulação e `\"` envolve a frase em aspas duplas).*
+(Explicacao: O \n pula a linha, o \t empurra o texto para a direita e a barra com aspas \" serve para conseguir mostrar as aspas duplas na tela sem fechar o printf).
 
 ---
 
-### Questão 09
-Determine a saída exata do programa a seguir e explique como o compilador C
-interpreta os argumentos do tipo caractere simples ('\n', '\t', '\"') passados para o modificador %c:
+### Questao 09
+Enunciado: O que acontece quando executamos o comando a seguir? Explique como o compilador interpreta os caracteres passados com %c:
+printf("%c%c%cPrimeiro programa%c", '\n', '\t', '\"', '\"');
 
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
-printf("%c%c%cPrimeiro programa", '\n', '\t', '\"');
-printf("%c", "\"");
-system("PAUSE");
-return 0;
-}
+Saida na tela:
+>   
+>     "Primeiro programa"  
 
-**Saída Exata:**
-> &nbsp;  
-> &nbsp;&nbsp;&nbsp;&nbsp;"Primeiro programa"  
-
-**Interpretação do Compilador:**  
-O compilador C interpreta delimitadores com aspas simples (como `'\n'`, `'\t'`, `'\"'`) como constantes do tipo caractere (`char`), representadas por seus respectivos códigos numéricos na tabela ASCII. Quando o modificador `%c` é utilizado, o `printf()` converte esse valor numérico e envia ao console a instrução gráfica correspondente (quebra de linha para `'\n'`, tabulação para `'\t'` e o caractere visual para `'\"'`).
+(Explicacao: O compilador le os caracteres entre aspas simples como codigos da tabela ASCII. O %c transforma esses codigos nas suas acoes ou simbolos no terminal, pulando linha com \n, dando espaco com \t e desenhando as aspas com \").
 
 ---
 
-### Questão 10
-A Linguagem C é conhecida por ser sensível a caixa alta e baixa (case sensitive). Explique
-o significado prático desse conceito. Identificadores como 'peso', 'Peso' e 'PESO' representam a mesma
-variável na memória? Assinale a alternativa correta e complemente com sua justificativa:
-a) Depende exclusivamente da implementação do compilador utilizado no sistema.
-b) Verdadeiro (a linguagem C diferencia rigorosamente letras maiúsculas de minúsculas).
-c) Falso (letras maiúsculas e minúsculas são interpretadas como equivalentes pelo compilador).
+### Questao 10
+Enunciado: A linguagem C e case-sensitive? O que isso significa na pratica para variaveis como peso, Peso e PESO?
+a) Falso
+b) Verdadeiro
 
-**Resposta:** **b) Verdadeiro (a linguagem C diferencia rigorosamente letras maiúsculas de minúsculas).**
+Resposta: b) Verdadeiro
 
-**Justificativa:** Ser *case-sensitive* significa que o compilador diferencia caracteres maiúsculos de minúsculos durante a análise léxica, pois eles possuem códigos ASCII distintos. Dessa forma, as identificadores `peso`, `Peso` e `PESO` são tratados pelo sistema como três variáveis completamente diferentes, alocadas em endereços de memória separados.
+(Explicacao: A linguagem C diferencia letras maiusculas de minusculas. Isso significa que peso, Peso e PESO sao tres variaveis totalmente diferentes para o programa).
 
 ---
 
-### Questão 11
-Para cada um dos valores constantes descritos na tabela abaixo, indique a classificação
-correta (por exemplo: constante inteira decimal, constante de ponto flutuante, constante de caractere,
-constante string ou sequência de escape) e o tipo de dado base correspondente em C (como char, int,
-float, double):
+### Questao 11
+Enunciado: Classifique cada uma das constantes a seguir indicando o seu tipo base em C (int, double, char, etc.):
 
-Constante Classificação (Tipo de Constante) Tipo Base em C
-\r [ Preencher ] [ Preencher ]
-2130 [ Preencher ] [ Preencher ]
--123 [ Preencher ] [ Preencher ]
-33.28 [ Preencher ] [ Preencher ]
-0XFA [ Preencher ] [ Preencher ]
-0101 [ Preencher ] [ Preencher ]
-2.0e30 [ Preencher ] [ Preencher ]
-\xDC [ Preencher ] [ Preencher ]
-'\"' [ Preencher ] [ Preencher ]
-'\\' [ Preencher ] [ Preencher ]
-'F' [ Preencher ] [ Preencher ]
-0 [ Preencher ] [ Preencher ]
-'\0' [ Preencher ] [ Preencher ]
-"F" [ Preencher ] [ Preencher ]
--4567.89 [ Preencher ] [ Preencher ]
-
-| Constante | Classificação (Tipo de Constante) | Tipo Base em C |
+| Constante | Classificacao | Tipo Base em C |
 | :--- | :--- | :--- |
-| `\r` | Sequência de escape (Caractere de controle) | `char` |
-| `2130` | Constante inteira decimal | `int` |
-| `-123` | Constante inteira decimal negativa | `int` |
-| `33.28` | Constante de ponto flutuante | `double` |
-| `0XFA` | Constante inteira hexadecimal | `int` |
-| `0101` | Constante inteira octal | `int` |
-| `2.0e30` | Constante de ponto flutuante em notação científica | `double` |
-| `\xDC` | Sequência de escape hexadecimal | `char` |
-| `'\"'` | Constante de caractere simples | `char` |
-| `'\\'` | Constante de caractere simples | `char` |
-| `'F'` | Constante de caractere simples | `char` |
-| `0` | Constante inteira decimal | `int` |
-| `'\0'` | Sequência de escape (Caractere nulo) | `char` |
-| `"F"` | Constante de string (cadeia de caracteres) | `char[]` / `char *` |
-| `-4567.89` | Constante de ponto flutuante negativa | `double` |
+| \r | Caractere de controle | char |
+| 2130 | Numero inteiro decimal | int |
+| -123 | Numero inteiro negativo | int |
+| 33.28 | Numero com ponto decimal | double |
+| 0XFA | Numero hexadecimal | int |
+| 0101 | Numero octal | int |
+| 2.0e30 | Notacao cientifica | double |
+| \xDC | Caractere hexadecimal | char |
+| '\"' | Caractere de aspas | char |
+| '\\' | Caractere de barra | char |
+| 'F' | Caractere simples | char |
+| 0 | Numero inteiro zero | int |
+| '\0' | Caractere nulo | char |
+| "F" | Texto ou String | char[] |
+| -4567.89 | Numero decimal negativo | double |
 
 ---
 
-### Questão 12
-A declaração de variáveis define o tipo e o identificador de cada espaço reservado na
-memória. Analise cada uma das declarações na tabela a seguir, preencha o seu status (Correto ou
-Incorreto) e, caso seja incorreto, justifique detalhadamente o erro sintático:
+### Questao 12
+Enunciado: Indique se as seguintes declaracoes de variaveis em C estao corretas (C) ou incorretas (I). Justifique as incorretas:
 
-Instrução Status (C/I) Justificativa Teórica
-a) int a; [ Correto / Incorreto ] [ Preencher ]
-b) float b; [ Correto / Incorreto ] [ Preencher ]
-c) double float c; [ Correto / Incorreto ] [ Preencher ]
-d) unsigned char d; [ Correto / Incorreto ] [ Preencher ]
-e) unsigned e; [ Correto / Incorreto ] [ Preencher ]
-f) long float f; [ Correto / Incorreto ] [ Preencher ]
-g) long g; [ Correto / Incorreto ] [ Preencher ]
-h) long double h; [ Correto / Incorreto ] [ Preencher ]
-
-| Instrução | Status (C/I) | Justificativa Teórica |
+| Instrucao | Status | Justificativa |
 | :--- | :--- | :--- |
-| **a) `int a;`** | **Correto** | Declaração válida para tipo inteiro simples. |
-| **b) `float b;`** | **Correto** | Declaração válida para ponto flutuante de precisão simples. |
-| **c) `double float c;`** | **Incorreto** | Combinação inválida. `double` e `float` são tipos primitivos concorrentes. |
-| **d) `unsigned char d;`** | **Correto** | Declaração válida de caractere sem sinal (faixa de 0 a 255). |
-| **e) `unsigned e;`** | **Correto** | Sintaxe válida. O compilador assume o tipo `int` por omissão (`unsigned int`). |
-| **f) `long float f;`** | **Incorreto** | Combinação obsoleta/inválida no padrão C moderno (deve-se utilizar `double`). |
-| **g) `long g;`** | **Correto** | Sintaxe válida. O compilador assume o tipo `int` por omissão (`long int`). |
-| **h) `long double h;`** | **Correto** | Declaração válida para ponto flutuante de precisão estendida. |
+| a) int a; | Correto | Esta certo, declara um numero inteiro. |
+| b) float b; | Correto | Esta certo, declara um numero decimal. |
+| c) double float c; | Incorreto | Nao pode usar double e float juntos na mesma variavel. |
+| d) unsigned char d; | Correto | Esta certo, declara um caractere sem sinal. |
+| e) unsigned e; | Correto | Esta certo, o C entende que e um unsigned int. |
+| f) long float f; | Incorreto | Nao se usa long float em C moderno, usa-se double. |
+| g) long g; | Correto | Esta certo, o C entende que e um long int. |
+| h) long double h; | Correto | Esta certo, declara um decimal com muita precisao. |
 
 ---
 
-### Questão 13
-No desenvolvimento de programas em C, o que são conceitualmente os arquivos de
-inclusão (headers com extensão .h)?
-a) São bibliotecas pré-compiladas em formato binário contendo funções estruturadas.
-b) São utilitários do sistema que realizam a linkedição dos programas.
-c) São arquivos de texto ASCII padrão contendo protótipos de funções, definições de constantes, macros e
-tipos.
-d) São módulos de controle executados diretamente pelo microprocessador em tempo de execução.
+### Questao 13
+Enunciado: O que sao arquivos de cabecalho (header files) com extensao .h na linguagem C?
+a) Arquivos executaveis compilados previamente.
+b) Arquivos de imagem usados na interface grafica.
+c) Arquivos de texto contendo declaracoes de funcoes e constantes de bibliotecas.
+d) Arquivos do sistema operacional.
 
-**Resposta:** **c) São arquivos de texto ASCII padrão contendo protótipos de funções, definições de constantes, macros e tipos.**
+Resposta: c) Arquivos de texto contendo declaracoes de funcoes e constantes de bibliotecas.
 
 ---
 
-### Questão 14
-Qual é o papel e o objetivo principal do programador ao incluir arquivos de cabeçalho
-(como <stdio.h>)?
-a) Instruir o compilador a carregar as definições das funções da biblioteca padrão antes de compilar o
-código-fonte.
-b) Linkeditar os arquivos binários do projeto automaticamente.
-c) Executar e testar as saídas de vídeo diretamente no console de depuração.
-d) Converter automaticamente o código-fonte C em arquivos executáveis (.EXE).
+### Questao 14
+Enunciado: Qual e a principal funcao da inclusao do arquivo <stdio.h> em um programa C?
+a) Permitir o uso de funcoes de entrada e saida como printf e scanf.
+b) Alocar memoria dinamicamente para o programa.
+c) Limpar a tela do console automaticamente.
+d) Definir os tipos basicos de dados da linguagem.
 
-**Resposta:** **a) Instruir o compilador a carregar as definições das funções da biblioteca padrão antes de compilar o código-fonte.**
+Resposta: a) Permitir o uso de funcoes de entrada e saida como printf e scanf.
 
 ---
 
-### Questão 15
-A diretiva #include, amplamente utilizada no topo dos arquivos C, é classificada como:
-a) Uma instrução C nativa (compilada diretamente em linguagem de máquina).
-b) Uma instrução específica de linguagens de programação orientadas a objetos.
-c) Uma diretiva especial para o pré-processador C, executada antes da compilação.
-d) Um objeto de classe de armazenamento dinâmico na memória heap.
+### Questao 15
+Enunciado: O que e a instrucao #include em um codigo escrito em C?
+a) Uma funcao da biblioteca padrao.
+b) Uma variavel global do sistema.
+c) Uma diretiva lida pelo pre-processador antes de compilar o codigo.
+d) Um operador logico da linguagem.
 
-**Resposta:** **c) Uma diretiva especial para o pré-processador C, executada antes da compilação.**
-
----
-
-### Questão 16
-As diretivas de pré-processador em C (todas iniciadas com o caractere #) são lidas e
-interpretadas pelo:
-a) Linkeditor do sistema no momento de montagem do arquivo executável final.
-b) Microprocessador diretamente em tempo de execução.
-c) Pré-processador (fase do compilador que altera o programa-fonte antes da compilação propriamente dita).
-d) Depurador integrado da IDE durante os testes de execução.
-
-**Resposta:** **c) Pré-processador (fase do compilador que altera o programa-fonte antes da compilação propriamente dita).**
+Resposta: c) Uma diretiva lida pelo pre-processador antes de compilar o codigo.
 
 ---
 
-### Questão 17
-Dentre as instruções de escrita abaixo, quais estão sintaticamente corretas? O que essas
-variações demonstram sobre a flexibilidade de espaçamento e formatação do compilador C?
+### Questao 16
+Enunciado: Qual componente do compilador e responsavel por processar as diretivas iniciadas pelo caractere # antes da traducao do programa?
+a) Linker (Ligador)
+b) Assembler
+c) Pre-processador
+d) Interpretador
+
+Resposta: c) Pre-processador
+
+---
+
+### Questao 17
+Enunciado: Analise as instrucoes a seguir e explique o conceito de formato livre (free-form) da linguagem C:
 a) printf ( "Primeiro programa" );
 b) printf( "Primeiro programa" );
 c) printf("Primeiro programa");
 d) printf "Primeiro programa" ;
 
-**Análise das Instruções:**
-* **a)** `printf ( "Primeiro programa" );` — **Correta.**
-* **b)** `printf( "Primeiro programa" );` — **Correta.**
-* **c)** `printf("Primeiro programa");` — **Correta.**
-* **d)** `printf "Primeiro programa" ;` — **Incorreta.** A chamada de função em C exige obrigatoriamente a utilização de parênteses `()` envolvendo os argumentos.
+Analise das opcoes:
+As opcoes a, b e c estao corretas. A opcao d esta errada porque falta colocar os parenteses na chamada do printf.
 
-**Conclusão:**  
-Essa variação demonstra que a Linguagem C é de **formato livre (*free-form*)**. O compilador ignora caracteres de espaço em branco adicionais (espaços, tabulações, quebras de linha) inseridos entre identificadores, operadores e parênteses, desde que a estrutura sintática básica da instrução seja respeitada.
+Conclusão:
+Isso mostra que C e uma linguagem de formato livre. O compilador nao se importa com espacos em branco extras entre as palavras e parenteses, desde que as regras basicas como usar parenteses e fechar com ponto e virgula sejam cumpridas.
