@@ -47,6 +47,7 @@ int main() {
     return 0;
 }
 
+---
 
 ### Questao 03 Operador Condicional Ternario vs. Estrutura if-else 
 O operador condicional ternario (?:) e uma forma concisa de tomada de decisão. Observe a instrução abaixo:
@@ -68,6 +69,8 @@ if (media >= 7.0) {
 }
 
 c) O operador ternario não pode substituir qualquer estrutura if-else. Ele é um operador de expressão projetado para retornar um unico valor diretamente. Ele possui limitações quando o fluxo de decisão exige a execução de blocos com vários comandos, instruções de controle complexas ou chamadas de funções com retorno void.
+
+---
 
 ### Questao 04 Selecao Multipla com switch-case e Efeito Fall-Through 
 O comando switch e utilizado para selecao entre multiplas alternativas. Observe o programa a seguir:
@@ -104,6 +107,8 @@ b) A instrução break serve para interromper a execução da estrutura switch-c
 
 c) O comando switch aceita apenas tipos de dados inteiros ou compativeis com valores inteiros (int, char, short, long, enum). Não é permitido utilizar float ou double, pois valores reais possuem imprecisão de valor binario e não representam valores exatos.
 
+---
+
 ### Questao 05 Avaliacao de Curto-Circuito em Operadores Logicos 
 Os operadores logicos (&& e ||) realizam a avaliacao de curto-circuito (short-circuit evaluation). Considere as variaveis inteiras a = 0, b = 5, c = 10 e analise o codigo:
 if (a != 0 && ++b > 5)
@@ -125,6 +130,8 @@ O incremento ++b foi ignorado devido ao curto-circuito. Como a != 0 e falso (poi
 b) No operador logico E (&&), se o primeiro case for avaliado como falso (0), a expressão inteira é garantida como falsa, fazendo com que o segundo operando nem seja avaliado. No operador logico OU (||), se o primeiro operando for avaliado como verdadeiro (diferente de 0), a expressão inteira e garantida como verdadeira, fazendo com que o segundo operando tambem não seja avaliado.
 
 c) Se a condição fosse alterada para if (a == 0 || ++b > 5), como a == 0 e verdadeiro (1), o curto-circuito do || impediria considerar o ++b. Com isso, b permaneceria valendo 5. O bloco do if seria executado (c += 10), fazendo c passar de 10 para 20. Os valores finais seriam b = 5 e c = 20.
+
+---
 
 ### Questao 06 Construcoes else-if e Analise Logica de Intervalos 
 Um programador escreveu o codigo abaixo para classificar a faixa etaria de um individuo, mas o programa apresenta comportamento inconsistente para certas idades:
